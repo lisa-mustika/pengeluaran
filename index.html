@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catatan Pengeluaran Bulanan</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    /* 1. Atur html dan body agar memenuhi viewport */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /*overflow: hidden; */
+        background-color: #f0f0f0; /* Tambahkan warna latar belakang jika perlu */
+    }
+    
+    /* 2. Style untuk container (wadah) iframe */
+    #iframe-container {
+        /* Memberikan jarak 15px dari sisi atas, bawah, kanan, dan kiri viewport */
+        margin: 15px; 
+        
+        /* Hitung lebar dan tinggi agar pas di dalam margin */
+        width: calc(100% - 30px); /* 100% - (15px kiri + 15px kanan) */
+        height: calc(100vh - 30px); /* 100vh - (15px atas + 15px bawah) */
+        
+        /* Posisi fixed agar tetap di tempat dan dihitung dari viewport */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        box-sizing: border-box; /* Memastikan padding/border tidak menambah ukuran total */
+    }
+    
+    /* 3. Style untuk iframe di dalam container */
+    #iframe-container iframe {
+        width: 100%; 
+        height: 100%; 
+        border: none;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <div id="iframe-container">
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbwn4AP4PxT9GHTFmPTOHnWw1tvA5c1NIgUeY8kV8OuMPIzHxVgfIuv7-rPpi7IKSMV-rg/exec"
+      allowfullscreen="true">
+    </iframe>
+  </div>
+
+  <script>
+    window.onload = function() {
+      // Script ini tetap mencari iframe, pastikan targetnya benar
+      document.querySelector('#iframe-container iframe')
+        .requestFullscreen()
+        .catch((err) => {
+          console.error('Error attempting to enable full-screen mode:', err.message);
+        });
+    };
+  </script>
+</body>
+</html>
